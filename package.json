@@ -1,0 +1,16 @@
+{
+  "name": "http-template",
+  "version": "0.0.0",
+  "description": "node module that uses templated files containing raw http to create http requests",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamlangsner/http-template.git"
+  },
+  "keywords": [
+    "nodejs",
+    "http"
+  ],
+  "author": "Adam Langsner <adamlangsner@gmail.com>",
+  "license": "BSD"
+}
