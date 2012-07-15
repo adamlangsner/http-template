@@ -23,22 +23,26 @@ http-template is a simple module that reads http templates and uses them to send
     Connection: keep-alive
 
 
-notice the **{{query}}** on the first line. This is how we can modify the request with dynamic data. One use for this is inserting session cookies into a request, since the session ID is different each time:
+notice the **{{query}}** on the first line. This is how we can modify the request with dynamic data. One good use for this is inserting session IDs into a request:
 
     ...
     Cookie: {{cookie}}; path=/;
     ...
 
 
-to send this request we can write the following simple app. Let's assume the the file shown above is named **google.http** and is in the **templates** directory
+to send this request we can write the following app. Let's assume the the file shown above is named **google.http** and is in the **templates** directory
 
-	// require the module and set the path to where templates are stored
-    var httpTemplate = require('http-template')(__dirname + '/templates');
+```js
+// require the module and set the path to where templates are stored
+var httpTemplate = require('http-template')(__dirname + '/templates');
 
-    // send a request using google.http, pass in object with query to search for
-    httpTemplate('google', {query: 'nodejs+api'}, function(response, body) {
-    	console.log(body);
-    });
+// send a request using google.http, pass in object with query to search for
+httpTemplate('google', {query: 'nodejs+api'}, function(response, body) {
+    console.log(body);
+});
+```
+
+the first argument specifies the name of the file to use without the **.http** extension. If you want to add sub-directories in your templates folder you can simply pass in 'sub_folder/file_name', once again leave off the **.http** extension.
 
 
 
