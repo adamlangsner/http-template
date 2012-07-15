@@ -2,7 +2,7 @@ var    _ = require('underscore'),
 	  fs = require('fs'),
 	path = require('path'),
 	http = require('http'),
-	zlip = require('zlib'),
+	zlib = require('zlib'),
    https = require('https');
 
 module.exports = function(basePath) {
@@ -71,7 +71,7 @@ module.exports = function(basePath) {
 		console.log(headers);
 		var req = proto.request({ 
 			host: host,
-			port: '443',
+			port: options.https ? '443' : '80',
 			path: path, 
 			method: method,
 			headers: headers }, 
@@ -88,9 +88,7 @@ module.exports = function(basePath) {
 					callback(res, Buffer.concat(buffers).toString());
 				});
 		});
-		if (body.length) {
-			req.write(body);
-		}
+		req.write(body);
 		req.end();
 	};
 };
