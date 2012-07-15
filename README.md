@@ -48,7 +48,23 @@ Arguments
 ### template name
 the first argument specifies the name of the file to use without the **.http** extension. If you want to add sub-directories in your templates folder you can simply pass in 'sub_folder/file_name', once again leave off the **.http** extension.
 
+### data
+the second argument is an object containing the data to render the template with. In the above example, we passed in **{query: 'nodejs+api'}** to fill in the **{{query}}** variable in the template. http-template uses underscore with mustache style interpolation tokens (**{{ }}**) to render templates.
 
+### options 
+the third argument can be an options object or the callback. the current supported options are as follows:
+
+    https: boolean (default: false) - if set to true request will be sent using https
+
+```js
+// send request over https
+httpTemplate.('google', {query: 'garbage'}, {https: true}, function(res, body) {
+	
+});
+```
+
+### callback
+the last argument (3rd or 4th if you pass in options) is a callback which takes two arguments, the response object and the body string. the body is provided in addition to the response because iof the response is gzipped http-template will deflate it and pass the body to the callback along with the response.
 
 
 
