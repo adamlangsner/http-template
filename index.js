@@ -68,7 +68,6 @@ module.exports = function(basePath) {
 
 		// send request
 		var proto = options.https ? https : http;
-		console.log(headers);
 		var req = proto.request({ 
 			host: host,
 			port: options.https ? '443' : '80',
