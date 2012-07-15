@@ -64,7 +64,7 @@ httpTemplate.('google', {query: 'garbage'}, {https: true}, function(res, body) {
 ```
 
 ### callback
-the last argument (3rd or 4th if you pass in options) is a callback which takes two arguments, the response object and the body string. the body is provided in addition to the response because iof the response is gzipped http-template will deflate it and pass the body to the callback along with the response.
+the last argument (3rd or 4th if you pass in options) is a callback which takes two arguments, the response object and the body string. the body is provided in addition to the response because if the response is gzipped, http-template will deflate it and pass the deflated body to the callback along with the response object.
 
 
 
