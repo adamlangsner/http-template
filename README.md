@@ -42,7 +42,13 @@ httpTemplate('google', {query: 'nodejs+api'}, function(response, body) {
 });
 ```
 
+Arguments
+---------
+
+### template name
 the first argument specifies the name of the file to use without the **.http** extension. If you want to add sub-directories in your templates folder you can simply pass in 'sub_folder/file_name', once again leave off the **.http** extension.
+
+
 
 
 
