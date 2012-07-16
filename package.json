@@ -1,6 +1,6 @@
 {
   "name": "http-template",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "node module that uses templated files containing raw http to create http requests",
   "main": "index.js",
   "dependencies": {
