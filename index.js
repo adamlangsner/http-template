@@ -35,7 +35,7 @@ module.exports = function(basePath) {
 
 		//parse first line
 		var lines = http_text.split(/\n/);
-		var matches = lines[0].match(/^([A-Za-z]+)\s+([\/0-9A-Za-z_&?=\-%+]+)\s+HTTP.+$/);
+		var matches = lines[0].match(/^([A-Za-z]+)\s+([\/0-9A-Za-z_&?=\-%+\.]+)\s+HTTP.+$/);
 		var method = matches[1];
 		var path = matches[2];
 		lines.shift();
