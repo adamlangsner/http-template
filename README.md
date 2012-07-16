@@ -26,7 +26,7 @@ http-template is a simple module that reads http templates and uses them to send
 notice the **{{query}}** on the first line. This is how we can modify the request with dynamic data. One good use for this is inserting session IDs into a request:
 
     ...
-    Cookie: {{cookie}}; path=/;
+    Cookie: {{session_id}}; path=/;
     ...
 
 
