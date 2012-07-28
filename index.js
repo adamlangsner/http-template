@@ -12,26 +12,32 @@ module.exports = function(basePath) {
 	basePath += (basePath[basePath.length-1]==='/' ? '' : '/');
 
 	var defaults = {
-		https: false
+		https: false,
+		autoContentLength: true
+	};
+
+	var get_options = function(options) {
+		if (options) {
+			return _.extend({}, defaults, options); // mix options into defaults, copy to new object
+		} else {
+			return _.extend({}, defaults); // no options passed, copy defaults
+		}
 	};
 
 	return function(template, data, options, callback) {
 
-		// if no options passed, fix params
 		if (_.isFunction(options) && !callback) {
-			callback = options // options is callback
-			options = _.extend({}, defaults); // no options passed, use defaults
-
-		// mix passed in options into defaults, copy to new object
-		} else {
-			options = _.extend({}, defaults, options);
+			callback = options;
+			options = null;
 		}
+
+		options = get_options(options);
 
 		// load template from file system
 		var http_text = _.template(
-		fs.readFileSync(basePath + template + '.http', 'utf-8').toString(), data, {
-			interpolate: /\{\{(.+?)\}\}/g
-		});
+			fs.readFileSync(basePath + template + '.http', 'utf-8').toString(), data, {
+				interpolate: /\{\{(.+?)\}\}/g
+			});
 
 		//parse first line
 		var lines = http_text.split(/\n/);
@@ -66,6 +72,11 @@ module.exports = function(basePath) {
 			}
 		});
 
+		// if enabled, use whatever the resulting body length is
+		if (options.autoContentLength) {
+			headers['Content-Length'] = body.length;
+		}
+
 		// send request
 		var proto = options.https ? https : http;
 		var req = proto.request({ 
@@ -89,5 +100,5 @@ module.exports = function(basePath) {
 		});
 		req.write(body);
 		req.end();
-	};
+  	};
 };

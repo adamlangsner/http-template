@@ -54,7 +54,8 @@ the second argument is an object containing the data to render the template with
 ### options 
 the third argument can be an options object or the callback. the current supported options are as follows:
 
-    https: boolean (default: false) - if set to true request will be sent using https
+    - https: boolean (default: false) - if set to true request will be sent using https
+    - autoContentLength: boolean (default: true) - when true, httpTemplate will fill in the 'Content-Length' header for you.
 
 ```js
 // send request over https
