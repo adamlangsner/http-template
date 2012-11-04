@@ -65,7 +65,7 @@ module.exports = function(basePath) {
 
 				} else {
 					inBody = true;
-					body += line;
+					body += line+'\n';
 				}
 				
 			} else {
