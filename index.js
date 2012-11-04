@@ -47,7 +47,7 @@ module.exports = function(basePath) {
 		lines.shift();
 
 		// read all the headers
-		var host, body = '', headers = {};
+		var host, body = '', headers = {}, inBody = false;
 		_.each(lines, function(line) {
 			
 			if (line.length > 0) {
@@ -64,10 +64,14 @@ module.exports = function(basePath) {
 					headers[k] = v;
 
 				} else {
+					inBody = true;
 					body += line;
 				}
 				
 			} else {
+				if (inBody) {
+					body += '\n';	
+				}
 				return;
 			}
 		});
