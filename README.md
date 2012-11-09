@@ -37,7 +37,7 @@ to send this request we can write the following app. Let's assume the the file s
 var httpTemplate = require('http-template')(__dirname + '/templates');
 
 // send a request using google.http, pass in object with query to search for
-httpTemplate('google', {query: 'nodejs+api'}, function(response, body) {
+httpTemplate('google', {query: 'Citizen+Kane'}, function(response, body) {
     console.log(body);
 });
 ```
