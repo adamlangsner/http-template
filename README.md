@@ -49,7 +49,7 @@ Arguments
 the first argument specifies the name of the file to use without the **.http** extension. If you want to add sub-directories in your templates folder you can simply pass in 'sub_folder/file_name', once again leave off the **.http** extension.
 
 ### data
-the second argument is an object containing the data to render the template with. In the above example, we passed in **{query: 'nodejs+api'}** to fill in the **{{query}}** variable in the template. http-template uses underscore with mustache style interpolation tokens (**{{ }}**) to render templates.
+the second argument is an object containing the data to render the template with. In the above example, we passed in **{query: 'Citizen+Kane'}** to fill in the **{{query}}** variable in the template. http-template uses underscore with mustache style interpolation tokens (**{{ }}**) to render templates.
 
 ### options 
 the third argument can be an options object or the callback. the current supported options are as follows:
